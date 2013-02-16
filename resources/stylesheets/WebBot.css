@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,50 +20,50 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* line 17, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -85,45 +85,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -522,7 +522,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 32, ../sass/WebElementStructure.sass */
 div.WSelectedMultiOption {
   border: 1px gray solid;
-  background-color: lightgray;
+  background-color: lightgrey;
   padding: 2px;
   margin-left: 2px;
   color: black;
@@ -906,7 +906,7 @@ div.WCenter div.WOuter div.WInner {
   -webkit-box-shadow: #b3b3b3 1px 1px 1px 1px;
   -moz-box-shadow: #b3b3b3 1px 1px 1px 1px;
   box-shadow: #b3b3b3 1px 1px 1px 1px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border: 1px gray solid;
 }
 /* line 308, ../sass/WebElementStructure.sass */
@@ -934,7 +934,7 @@ div.WCenter div.WOuter div.WInner {
   -moz-border-radius-topright: 10px;
   -webkit-border-top-right-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border-left: 1px gray solid;
   border-right: 1px gray solid;
   padding: 5px;
@@ -1002,7 +1002,7 @@ div.WCenter div.WOuter div.WInner {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border-radius: 20px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border-bottom: 1px gray solid;
   line-height: 32px;
 }
@@ -1082,7 +1082,7 @@ label.WInfo {
   width: 100%;
 }
 
-/* line 4, ../sass/WebElementStructureWithButtons.sass */
+/* line 23, ../sass/WebElementStructureWithButtons.sass */
 input[type=button], input[type=submit] {
   font-size: 19px;
   padding: 0.3em 1.5em;
@@ -1140,7 +1140,7 @@ input[type=button]::-moz-focus-inner, input[type=submit]::-moz-focus-inner {
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 6, ../sass/WebElementStructureWithButtons.sass */
+/* line 25, ../sass/WebElementStructureWithButtons.sass */
 input[type=button].MainAction, input[type=submit].MainAction {
   font-size: 19px;
   padding: 0.3em 1.5em;
@@ -1198,7 +1198,7 @@ input[type=button].MainAction::-moz-focus-inner, input[type=submit].MainAction::
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 8, ../sass/WebElementStructureWithButtons.sass */
+/* line 27, ../sass/WebElementStructureWithButtons.sass */
 input[type=button].DeleteAction, input[type=submit].DeleteAction {
   font-size: 19px;
   padding: 0.3em 1.5em;
@@ -1256,7 +1256,7 @@ input[type=button].DeleteAction::-moz-focus-inner, input[type=submit].DeleteActi
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 10, ../sass/WebElementStructureWithButtons.sass */
+/* line 29, ../sass/WebElementStructureWithButtons.sass */
 input[type=button].WToggleButton, input[type=submit].WToggleButton {
   font-size: 19px;
   padding: 0.3em 1.5em;
@@ -1314,7 +1314,7 @@ input[type=button].WToggleButton::-moz-focus-inner, input[type=submit].WToggleBu
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 12, ../sass/WebElementStructureWithButtons.sass */
+/* line 31, ../sass/WebElementStructureWithButtons.sass */
 input[type=button].WToggleButton.Pushed, input[type=submit].WToggleButton.Pushed {
   -webkit-box-shadow: #333333 0 0.2em 0.4em inset;
   -moz-box-shadow: #333333 0 0.2em 0.4em inset;
@@ -1327,7 +1327,7 @@ input[type=button].WToggleButton.Pushed:active, input[type=submit].WToggleButton
   -moz-box-shadow: #282828 0 0.2em 0.4em inset;
   box-shadow: #282828 0 0.2em 0.4em inset;
 }
-/* line 14, ../sass/WebElementStructureWithButtons.sass */
+/* line 34, ../sass/WebElementStructureWithButtons.sass */
 input[type=button][disabled], input[type=submit][disabled] {
   -webkit-box-shadow: #6c6c6c 0 0.2em 0.4em inset;
   -moz-box-shadow: #6c6c6c 0 0.2em 0.4em inset;
@@ -1343,11 +1343,24 @@ input[type=button][disabled]:active, input[type=submit][disabled]:active {
   -moz-box-shadow: #616161 0 0.2em 0.4em inset;
   box-shadow: #616161 0 0.2em 0.4em inset;
 }
-/* line 17, ../sass/WebElementStructureWithButtons.sass */
+/* line 36, ../sass/WebElementStructureWithButtons.sass */
 input[type=button][disabled]:active, input[type=submit][disabled]:active {
   -webkit-box-shadow: white 1px 1px 1px 1px;
   -moz-box-shadow: white 1px 1px 1px 1px;
   box-shadow: white 1px 1px 1px 1px;
+}
+
+/* line 40, ../sass/WebElementStructureWithButtons.sass */
+.WButtonGroup input[type=button], .WButtonGroup input[type=submit] {
+  border-radius: 0px;
+}
+/* line 43, ../sass/WebElementStructureWithButtons.sass */
+.WButtonGroup WFirst input[type=button], .WButtonGroup WFirst input[type=submit] {
+  border-radius: 8px 0px 0px 8px;
+}
+/* line 46, ../sass/WebElementStructureWithButtons.sass */
+.WButtonGroup .WLast input[type=button], .WButtonGroup .WLast input[type=submit] {
+  border-radius: 0px 8px 8px 0px;
 }
 
 /* line 5, ../sass/_Fonts.sass */
@@ -2049,7 +2062,7 @@ input[type=button][disabled]:active, input[type=submit][disabled]:active {
   -webkit-box-shadow: #b3b3b3 1px 1px 1px 1px;
   -moz-box-shadow: #b3b3b3 1px 1px 1px 1px;
   box-shadow: #b3b3b3 1px 1px 1px 1px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border: 1px gray solid;
 }
 /* line 53, ../sass/WebBot.sass */
@@ -2077,7 +2090,7 @@ input[type=button][disabled]:active, input[type=submit][disabled]:active {
   -moz-border-radius-topright: 10px;
   -webkit-border-top-right-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border-left: 1px gray solid;
   border-right: 1px gray solid;
   padding: 5px;
@@ -2145,7 +2158,7 @@ input[type=button][disabled]:active, input[type=submit][disabled]:active {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border-radius: 20px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border-bottom: 1px gray solid;
   line-height: 32px;
 }
