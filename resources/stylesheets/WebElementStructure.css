@@ -392,7 +392,7 @@
 /* line 32, ../sass/WebElementStructure.sass */
 div.WSelectedMultiOption {
   border: 1px gray solid;
-  background-color: lightgray;
+  background-color: lightgrey;
   padding: 2px;
   margin-left: 2px;
   color: black;
@@ -776,7 +776,7 @@ div.WCenter div.WOuter div.WInner {
   -webkit-box-shadow: #b3b3b3 1px 1px 1px 1px;
   -moz-box-shadow: #b3b3b3 1px 1px 1px 1px;
   box-shadow: #b3b3b3 1px 1px 1px 1px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border: 1px gray solid;
 }
 /* line 308, ../sass/WebElementStructure.sass */
@@ -804,7 +804,7 @@ div.WCenter div.WOuter div.WInner {
   -moz-border-radius-topright: 10px;
   -webkit-border-top-right-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border-left: 1px gray solid;
   border-right: 1px gray solid;
   padding: 5px;
@@ -872,7 +872,7 @@ div.WCenter div.WOuter div.WInner {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border-radius: 20px;
-  background-color: lightgray;
+  background-color: lightgrey;
   border-bottom: 1px gray solid;
   line-height: 32px;
 }
@@ -950,4 +950,15 @@ label.WInfo {
   border: 1px #225374 solid;
   padding: 4px;
   width: 100%;
+}
+
+/* line 397, ../sass/WebElementStructure.sass */
+.WGooglePlusBadge {
+  text-decoration: none;
+}
+/* line 399, ../sass/WebElementStructure.sass */
+.WGooglePlusBadge img {
+  border: 0;
+  width: 32px;
+  height: 32px;
 }
