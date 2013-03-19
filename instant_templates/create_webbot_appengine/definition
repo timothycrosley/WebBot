@@ -1,0 +1,41 @@
+[Info]
+label = "WebBot for AppEngine"
+name = "create_webbot_appengine"
+description = "Creates the webbot application infrastructure needed to create DynamicForm / WebElement apps on top of Google's AppEngine"
+icon = "Default"
+license = "GPLV2"
+
+[Arguments]
+    [[name]]
+        label = "AppEngine App Name (exactly as app engine app is named - case and all):"
+        type = "textfield"
+    [[label]]
+        label = "Descriptive free form label:"
+        type = "textfield"
+    [[description]]
+        label = "Full text description of app:"
+        type = "textfield"
+    [[owner]]
+        label = "Full name of the copyright owner (usually your name):"
+        type = "textfield"
+
+[DirectoryAdditions]
+app = %(name)s
+pygments = %(app)s/pygments
+static = %(app)s/static
+WebBot = %(app)s/WebBot
+DynamicForm = %(app)s/DynamicForm
+WebElements = %(app)s/WebElements
+Pages = %(app)s/Pages
+Models = %(app)s/Models
+
+[FileAdditions]
+app.yaml = %(app)s/app.yaml
+index.yaml = %(app)s/index.yaml
+main.py = %(app)s/main.py
+Template.wui = %(app)s/Pages/Home/Template.wui
+Page.wui = %(app)s/WebBot/Page.wui
+BasePage.py = %(app)s/WebBot/__init__.py
+
+[Scripts]
+onfinish = "echo 'Just finished creating %(name)s WebBot! Use google app engine launcher to start it (http://code.google.com/p/google-appengine-wx-launcher/).'",

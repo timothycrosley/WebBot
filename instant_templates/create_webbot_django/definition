@@ -1,0 +1,36 @@
+[Info]
+label = "WebBot for Django"
+name = "create_webbot_django"
+description = "Creates the webbot application infrastructure needed to create DynamicForm / WebElement apps on top of Django"
+icon = "Default"
+license = "GPLV2"
+
+[Arguments]
+    [[name]]
+        label = "New Django app name (note this should be done within an existing Django project):"
+        type = "textfield"
+    [[label]]
+        label = "Descriptive free form label:"
+        type = "textfield"
+    [[description]]
+        label = "Full text description of app:"
+        type = "textfield"
+    [[owner]]
+        label = "Full name of the copyright owner (usually your name):"
+        type = "textfield"
+
+[DirectoryAdditions]
+app = %(name)s
+static = %(app)s/static
+WebBot = %(app)s/WebBot
+Pages = %(app)s/Pages
+
+[FileAdditions]
+urls.py = %(app)s/urls.py
+Template.wui = %(app)s/Pages/Home/Template.wui
+Page.wui = %(app)s/WebBot/Page.wui
+__init__.py = %(app)s/__init__.py
+BasePage.py = %(app)s/WebBot/__init__.py
+
+[Scripts]
+onfinish = "echo 'Just finished creating %(name)s WebBot! You can now add the app to your Django project! '",

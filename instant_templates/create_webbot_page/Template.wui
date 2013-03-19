@@ -1,0 +1,3 @@
+vertical
+ > headerlabel level=1 text="%(name)s"
+ > label text="%(description)s"

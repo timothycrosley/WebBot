@@ -1,0 +1,10 @@
+indexes:
+
+- kind: Example
+  properties:
+  - name: __searchable_text_index
+  - name: owner
+
+- kind: Example
+  properties:
+  - name: __searchable_text_index

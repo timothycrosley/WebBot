@@ -1,0 +1,26 @@
+[Info]
+label = "WebBot Page"
+name = "create_webbot_page"
+description = "Adds a new page to a WebBot app - should be expanded in the apps directory"
+icon = "Default"
+license = "GPLV2"
+
+[Arguments]
+    [[name]]
+        label = "Page name (camel case - python class - no spaces ex: MyPage):"
+        type = "textfield"
+    [[description]]
+        label = "Full text description of page:"
+        type = "textfield"
+
+
+[DirectoryAdditions]
+page = Pages/%(name)s
+
+[FileAdditions]
+Servlet.py = %(page)s/Servlet.py
+Template.wui = %(page)s/Template.wui
+__init__.py = %(page)s/__init__.py
+
+[Scripts]
+onfinish = "echo 'Just finished creating %(name)s WebBot Page! Relaunch your appengine app to use.'",

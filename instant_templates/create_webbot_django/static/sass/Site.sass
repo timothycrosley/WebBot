@@ -1,0 +1,22 @@
+@import "WebBot"
+@import "compass/css3/border-radius"
+#pageHeader
+    padding-bottom: 10px
+#body
+    background-color: #c8c8c8
+    @include border-radius(20px, 20px)
+#footer
+    padding-top: 20px
+    padding-bottom: 10px
+    font-size: 1.2em
+.IndentedContent
+    padding: 10px
+
+@mixin smallScreen
+    body
+        overflow-x: hidden
+
+@media screen and (max-width: 640px)
+    @include smallScreen
+@media screen and (max-device-width: 640px)
+    @include smallScreen

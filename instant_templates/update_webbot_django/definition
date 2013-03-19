@@ -1,0 +1,24 @@
+[Info]
+label = "Update WebBot for AppEngine"
+name = "update_webbot_appengine"
+description = "Updates the base libraries for a WebBot on app engine instance (run in root directory)"
+icon = "Default"
+license = "GPLV2"
+
+[Arguments]
+    [[accept]]
+        label = "Make sure this is being ran in the apps root directory, then press enter:"
+        type = "textfield"
+
+[DirectoryAdditions]
+pygments = pygments
+DynamicForm = DynamicForm
+WebElements = WebElements
+
+[FileAdditions]
+_WebBot.scss = static/sass/_WebBot.scss
+PageUtils.py = WebBot/PageUtils.py
+WebBot.js = static/js/WebBot.js
+
+[Scripts]
+onfinish = "compass compile static", "echo 'Just finished updating your WebBot!'",

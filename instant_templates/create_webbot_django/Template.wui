@@ -1,0 +1,4 @@
+flow
+ vertical.IndentedContent
+  > headerlabel level=4 text="Welcome to %(label)s!"
+  > label text="%(description)s"
