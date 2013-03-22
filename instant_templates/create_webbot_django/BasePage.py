@@ -1,7 +1,15 @@
-from DynamicForm.AppEngine import DynamicForm, PageControls
-from WebElements import UITemplate
+import os
 
-class Page(DynamicForm):
+from DynamicForm import DynamicForm, PageControls
+from WebElements import UITemplate
+from WebElements import Base
+from django.conf import settings
+
+from django.template import Context, Template, RequestContext
+
+Base.Settings.STATIC_URL = settings.STATIC_URL
+
+class Page(DynamicForm.DynamicForm):
     """
         Defines the base behavior of all pages within the WebBot app.
     """
@@ -9,14 +17,13 @@ class Page(DynamicForm):
         """
             Returns the title of the app plus the title of current page.
         """
-        return "%(label)s - %(description)s - " + DynamicForm.title(self, request)
+        return "%(label)s - %(description)s - " + DynamicForm.DynamicForm.title(self, request)
 
     class MainControl(PageControls.TemplateControl):
-        """
-            Defines how the frame of the page will appear, you can subclass this on a per page basis to change
-            the frame.
-        """
-        template = UITemplate.fromFile("WebBot/Page.wui")
+        template = UITemplate.fromFile(os.path.dirname(__file__) + "/Page.wui")
+
+        def initUI(self, ui, request):
+            ui.pageContents.replaceWith(self.contentControl)
 
         def initUI(self, ui, request):
             """
@@ -24,4 +31,3 @@ class Page(DynamicForm):
                 defined on a per-page basis to define the content of the page.
             """
             ui.pageContents.replaceWith(self.contentControl)
-

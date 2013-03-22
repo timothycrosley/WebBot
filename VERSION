@@ -1,3 +1,4 @@
+0.4.1 - Fixed small bug with django creation template
 0.4.0 - Updated to include WebElements Alpha 22 and DynamicForm 0.5.2
 0.3.0 - Include all instant templates in git repo for easy modification
 0.2.0 - Updated base css and javascript

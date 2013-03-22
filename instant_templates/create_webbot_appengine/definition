@@ -38,4 +38,4 @@ Page.wui = %(app)s/WebBot/Page.wui
 BasePage.py = %(app)s/WebBot/__init__.py
 
 [Scripts]
-onfinish = "echo 'Just finished creating %(name)s WebBot! Use google app engine launcher to start it (http://code.google.com/p/google-appengine-wx-launcher/).'",
+onfinish = "echo 'Just finished creating %(name)s WebBot!. Use "dev_appserver.py %(app)s" to start.'", "echo 'It will then be available locally at http://localhost:8080/'",
