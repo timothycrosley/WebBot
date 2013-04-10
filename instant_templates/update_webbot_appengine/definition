@@ -19,6 +19,7 @@ WebElements = WebElements
 _WebBot.scss = static/sass/_WebBot.scss
 PageUtils.py = WebBot/PageUtils.py
 WebBot.js = static/js/WebBot.js
+Utils.py = Models/Utils.py
 
 [Scripts]
 onfinish = "compass compile static", "echo 'Just finished updating your WebBot!'",

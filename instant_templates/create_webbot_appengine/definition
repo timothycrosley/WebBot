@@ -36,6 +36,7 @@ main.py = %(app)s/main.py
 Template.wui = %(app)s/Pages/Home/Template.wui
 Page.wui = %(app)s/WebBot/Page.wui
 BasePage.py = %(app)s/WebBot/__init__.py
+Servlet.py = %(app)s/Pages/Home/Servlet.py
 
 [Scripts]
 onfinish = "echo 'Just finished creating %(name)s WebBot!. Use "dev_appserver.py %(app)s" to start.'", "echo 'It will then be available locally at http://localhost:8080/'",

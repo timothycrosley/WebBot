@@ -31,6 +31,7 @@ Template.wui = %(app)s/Pages/Home/Template.wui
 Page.wui = %(app)s/WebBot/Page.wui
 __init__.py = %(app)s/__init__.py
 BasePage.py = %(app)s/WebBot/__init__.py
+Servlet.py = %(app)s/Pages/Home/Servlet.py
 
 [Scripts]
 onfinish = "echo 'Just finished creating %(name)s WebBot! You can now add the app to your Django project! '",

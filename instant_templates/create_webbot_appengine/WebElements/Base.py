@@ -21,6 +21,7 @@
 '''
 
 import re
+import cgi
 from types import FunctionType
 
 from . import ClientSide, DictUtils, ToClientSide
@@ -28,7 +29,7 @@ from .Connectable import Connectable
 from .IteratorUtils import Queryable
 from .MethodUtils import acceptsArguments, CallBack
 from .MultiplePythonSupport import *
-from .StringUtils import interpretAsString
+from .StringUtils import interpretAsString, listReplace
 from itertools import chain
 
 
@@ -39,7 +40,6 @@ class Settings(object):
                 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'isindex', 'menu', 'noframes', 'noscript', 'ol',
                 'p', 'pre', 'table', 'ul', 'dd', 'dt', 'frameset', 'li', 'tbody', 'td', 'tfoot', 'th',
                 'thead', 'tr')
-
 
 def addChildProperties(propertiesDict, classDefinition, accessor):
     """
@@ -129,6 +129,15 @@ class WebElement(Connectable):
             if type(action) in (list, tuple):
                 action = ClientSide.Script(";".join([ClientSide.var(actionScript) for actionScript in action]))
             return ClientSide.addEvent(self, event, ClientSide.eventHandler(action))
+
+        def onKey(self, key, action, direction="up"):
+            """
+                Attaches a client side action to be performed every time a key is pressed on the element.
+            """
+            with self.evt.keyCode.IF.IS(key) as eventHandler:
+                eventHandler(action)
+
+            return self.on('key' + direction, eventHandler)
 
         @property
         def id(self):
@@ -874,6 +883,12 @@ class WebElement(Connectable):
             if nestedChild:
                 return nestedChild
 
+    def errors(self):
+        """
+            Returns all errors present and visible within this element
+        """
+        return self.query().filter(classes__contains="WError", shown=True)
+
     def prefix(self):
         """
             Returns the prefix set for this element or the first parent element with one set
@@ -1413,6 +1428,15 @@ class WebElement(Connectable):
             return True
         return False
 
+    def sanitize(self, inputValue):
+        """
+            Sanitizes direct user input, to protect against XSS attacks.
+        """
+        if type(inputValue) not in (str, unicode):
+            return inputValue
+
+        return cgi.escape(inputValue)
+
     def __iter__(self):
         return self.childElements.__iter__()
 
@@ -1514,6 +1538,12 @@ class TextNode(object):
             Returns the text associated with the text node.
         """
         return self._text
+
+    def shown(self):
+        """
+            Text node elements are always visible
+        """
+        return True
 
     def toHTML(self, *args, **kwargs):
         """

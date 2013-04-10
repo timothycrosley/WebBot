@@ -3731,7 +3731,7 @@ WebElements.Settings.throbberImage = 'images/throbber.gif';
 WebElements.Settings.Serialize = ['input', 'textarea', 'select'];
 
 WebElements.State = {}
-WebElements.State.dropDownOpen = false;
+WebElements.State.isPopupOpen = false;
 WebElements.State.currentDropDown = null;
 WebElements.State.currentButton = null;
 
@@ -3739,7 +3739,7 @@ WebElements.State.currentButton = null;
 WebElements.get = function (element)
 {
     //If an actual element is given (or nothing is given) just return it
-    if(!element || element.innerHTML != null || element == document)
+    if(!element || element.innerHTML != null || element == document || element == window)
     {
         return element;
     }
@@ -4071,7 +4071,13 @@ WebElements.displayDropDown = function(dropDown, parentElement)
 WebElements.toggleDropDown = function(dropDown, parentElement)
 {
     var dropDown = WebElements.get(dropDown);
-    WebElements.shown(dropDown) && WebElements.hide(dropDown) || WebElements.displayDropDown(dropDown, parentElement);
+    if(WebElements.shown(dropDown))
+    {
+        WebElements.hide(dropDown);
+        return false;
+    }
+    WebElements.displayDropDown(dropDown, parentElement);
+    return true;
 }
 
 WebElements.openAccordion = function(accordionName)
@@ -4764,7 +4770,7 @@ WebElements.closeMenu = function()
 {
     WebElements.hide(WebElements.State.currentDropDown);
     if(WebElements.State.currentButton){
-        WebElements.removeClass(WebElements.State.currentButton, 'SelectedDropDown');
+        WebElements.removeClass(WebElements.State.currentButton, 'WSelected');
     }
 }
 
@@ -4957,28 +4963,27 @@ WebElements.buildFileOpener = function(dropBox)
 
 WebElements.clickDropDown = function(menu, openOnly, button, parentElement)
 {
-    WebElements.State.dropDownOpen = true;
+    WebElements.State.isPopupOpen = true;
     if(WebElements.State.currentDropDown && WebElements.State.currentDropDown != menu)
     {
         WebElements.hide(WebElements.State.currentDropDown);
-        WebElements.removeClass(WebElements.State.currentButton, 'SelectedDropDown');
+        WebElements.removeClass(WebElements.State.currentButton, 'WSelected');
     }
     WebElements.State.currentDropDown = menu;
     WebElements.State.currentButton = button;
     if(!openOnly || !WebElements.shown(WebElements.State.currentDropDown)){
         if(WebElements.toggleDropDown(WebElements.State.currentDropDown, parentElement)){
-            WebElements.addClass(button, 'SelectedDropDown');
+            WebElements.addClass(button, 'WSelected');
         }
         else{
-            WebElements.removeClass(button, 'SelectedDropDown');
+            WebElements.removeClass(button, 'WSelected');
        }
    }
 }
 
 
 //attach on click event to body to close any open pop up menus when a random click is placed
-WebElements.State.oldDocumentOnload = document.onload;
-document.onload = function()
+WebElements.Events.addEvent(window, 'load', function()
 {
     document.body.onclick = function closeOpenMenu()
     {
@@ -4992,11 +4997,7 @@ document.onload = function()
             WebElements.State.isPopupOpen = false;
         }
     }
-    if(WebElements.State.oldDocumentOnload)
-    {
-        WebElements.State.oldDocumentOnload();
-    }
-}
+});
 
 WebElements.serialize = function(field)
 {
@@ -5007,7 +5008,7 @@ WebElements.serialize = function(field)
     {
         return '';
     }
-    if(tagName == "input" || tagName == "textArea")
+    if(tagName == "input" || tagName == "textarea")
     {
         if(tagName == "input")
         {
@@ -5248,7 +5249,7 @@ DynamicForm.serializeControl = function(pageControl)
 }
 
 // Quickly and efficiently serializes one or more controls returning a string representation
-DynamicForm.serializeControls = function(pageControls)
+DynamicForm.serializeControls = function(pageControls, fresh)
 {
     var pageControls = WebElements.map(pageControls, WebElements.get);
     var fields = Array();
@@ -5265,7 +5266,10 @@ DynamicForm.serializeControls = function(pageControls)
                                 fields = fields.concat(WebElements.getElementsByTagNames(WebElements.Settings.Serialize,
                                                                                         form, true));
                             });
-        fields = fields.concat(WebElements.getElementsByTagNames(WebElements.Settings.Serialize, pageControl, true));
+        if(!fresh)
+        {
+            fields = fields.concat(WebElements.getElementsByTagNames(WebElements.Settings.Serialize, pageControl, true));
+        }
         serializedHandlers.push("requestHandler=" + requestHandler);
     }
     return serializedHandlers.concat([WebElements.serializeElements(WebElements.sortUnique(fields))]).join("&");
@@ -5278,13 +5282,14 @@ DynamicForm.abortLoading = function(view)
     {
         if(DynamicForm.loading[view].abort)
         {
+            DynamicForm.loading[view].onreadystatechange = function(){};
             DynamicForm.loading[view].abort();
         }
     }
 }
 
 // Requests one or many controls on a page
-DynamicForm._requestPageControls = function(pageControls, method, silent, params, timeout)
+DynamicForm._requestPageControls = function(pageControls, method, silent, params, timeout, fresh)
 {
     if(typeof(pageControls) != typeof([]))
     {
@@ -5308,7 +5313,7 @@ DynamicForm._requestPageControls = function(pageControls, method, silent, params
         return;
     }
 
-    var params = [DynamicForm.serializeControls(pageControls), params].join("&");
+    var params = [DynamicForm.serializeControls(pageControls, fresh), params].join("&");
     if(!silent)
     {
         for(currentPageControl = 0; currentPageControl < pageControls.length; currentPageControl++)
@@ -5371,10 +5376,11 @@ DynamicForm._applyUpdates = function(xmlhttp, pageControls)
     {
         var pageControl = pageControls[currentPageControl];
         var response = responses[currentPageControl];
-        pageControl.innerHTML = response.responseText;
 
-        WebElements.show(pageControl);
         DynamicForm.loading[pageControl.id] = null;
+        pageControl.innerHTML = response.responseText;
+        WebElements.show(pageControl);
+
         WebElements.hide(pageControl.id + ':Loading');
 
         WebElements.forEach(pageControl.getElementsByTagName('script'), function(scr){
@@ -5390,25 +5396,25 @@ DynamicForm._applyUpdates = function(xmlhttp, pageControls)
 }
 
 // Asks the server to provide a new version of the control
-DynamicForm.get = function(pageControl, silent, params, timeout)
+DynamicForm.get = function(pageControl, silent, params, timeout, fresh)
 {
-    return DynamicForm._requestPageControls(pageControl, "GET", silent, params, timeout);
+    return DynamicForm._requestPageControls(pageControl, "GET", silent, params, timeout, fresh);
 }
 
 // Posts the current version of the control to the server for it to respond
-DynamicForm.post = function(pageControl, silent, params, timeout)
+DynamicForm.post = function(pageControl, silent, params, timeout, fresh)
 {
-    return DynamicForm._requestPageControls(pageControl, "POST", silent, params, timeout);
+    return DynamicForm._requestPageControls(pageControl, "POST", silent, params, timeout, fresh);
 }
 
 // Puts the current version of the control to the server for it to respond
-DynamicForm.put = function(pageControl, silent, params, timeout)
+DynamicForm.put = function(pageControl, silent, params, timeout, fresh)
 {
-    return DynamicForm._requestPageControls(pageControl, "PUT", silent, params, timeout);
+    return DynamicForm._requestPageControls(pageControl, "PUT", silent, params, timeout, fresh);
 }
 
 // Request a delete of the current version of the control for the server to respond to
-DynamicForm.delete = function(pageControl, silent, params, timeout)
+DynamicForm.delete = function(pageControl, silent, params, timeout, fresh)
 {
-    return DynamicForm._requestPageControls(pageControl, "DELETE", silent, params, timeout);
+    return DynamicForm._requestPageControls(pageControl, "DELETE", silent, params, timeout, fresh);
 }

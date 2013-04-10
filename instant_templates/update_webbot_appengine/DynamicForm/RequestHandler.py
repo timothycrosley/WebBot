@@ -48,7 +48,7 @@ class RequestHandler(object):
         grabFields = self.grabFields
         grabForms = self.grabForms
         if parentHandler:
-            self.accessor = self.parentHandler.accessor + "." + self.accessor
+            self.accessor = self.parentHandler.accessor + "-" + self.accessor
             self.grabFields = set(self.grabFields).union(parentHandler.sharedFields)
             self.grabForms = set(self.grabForms).union(parentHandler.sharedForms)
             self.sharedFields = set(self.sharedFields).union(parentHandler.sharedFields)
@@ -60,13 +60,14 @@ class RequestHandler(object):
         self.initScripts.append("DynamicForm.handlers['%s'].grabForms = %s;" %
                                 (self.accessor, json.dumps(list(self.grabForms))))
 
+        self.makeConnections()
         self._registerChildren()
 
         if not parentHandler:
             for handler in self.allHandlers():
+                handler.rootHandler = self
                 if handler != self:
                     self.resourceFiles += handler.resourceFiles
-                handler.makeConnections()
 
             for handler in self.childHandlers.values():
                 for name, value in iteritems(self.childHandlers):
@@ -74,13 +75,21 @@ class RequestHandler(object):
                         setattr(handler, name, value)
 
     def __str__(self):
-        return " ".join([string[0].upper() + string[1:] for string in self.accessor.split(".")])
+        return " ".join([string[0].upper() + string[1:] for string in self.accessor.split("-")])
 
     def _registerChildren(self):
         for attribute in (getattr(self, attribute, None) for attribute in dir(self) if attribute not in ('__class__',)):
             if type(attribute) == type and \
                issubclass(attribute, RequestHandler) and not attribute.__name__.startswith("Abstract"):
                 self.registerControl(attribute)
+
+        # Connect sibling handlers so they can communicate with each-other easily
+        for childHandlerName, childHandler in self.childHandlers.iteritems():
+            for siblingName, siblingHandler in self.childHandlers.iteritems():
+                if childHandlerName == siblingName:
+                    continue
+
+                childHandler.__setattr__(siblingHandler.baseName, siblingHandler)
 
     def registerControl(self, controlClass):
         """
@@ -111,13 +120,13 @@ class RequestHandler(object):
         if not handlers:
             handlers = request.fields.get('requestHandler', '')
             if type(handlers) in (list, set, tuple):
-                result = [self.handleRequest(request.copy(), handler.split(".")).serialize() for handler in handlers]
+                result = [self.handleRequest(request.copy(), handler.split("-")).serialize() for handler in handlers]
                 request.response.status = HTTP.Response.Status.MULTI_STATUS
                 request.response.contentType = HTTP.Response.ContentType.JSON
                 request.response.content = json.dumps(result)
                 return request.response
 
-            handlers = handlers.split(".")
+            handlers = handlers.split("-")
 
         if not handlers.pop(0) in (self.baseName, ""): # Ensure the handler is either the current handler or not spec.
             request.response.status = HTTP.Response.Status.NOT_FOUND
